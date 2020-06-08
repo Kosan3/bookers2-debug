@@ -1,0 +1,20 @@
+<% book.post_comments.each do |post_comment| %>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td><%= link_to (post_comment.user) do %>
+			<%= attachment_image_tag(post_comment.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
+			<%= post_comment.user.name %>
+			<% end %></td>
+				<td width="150">
+					<%= post_comment.comment %>
+				</td>
+				<% if post_comment.user == current_user %>
+				<td>
+					<%= link_to "削除", book_post_comment_path(post_comment.book.id, post_comment.id), remote: true, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger' %>
+				</td>
+				<% end %>
+			</tr>
+		</tbody>
+	</table>
+<% end %>

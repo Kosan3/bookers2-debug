@@ -1,0 +1,15 @@
+<h1>DM</h1>
+
+<h4>参加者</h4>
+<% @entries.each do |e| %>
+  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name %>さん</a></strong></h5>
+<% end %>
+
+<hr>
+<div id="messages">
+  <%= render 'messages/index', {messages: @messages} %>
+</div>
+
+<div id="message_form">
+  <%= render 'messages/form', {message: @message, room: @room} %>
+</div>

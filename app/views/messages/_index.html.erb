@@ -1,0 +1,6 @@
+
+<% messages.each do |m| %>
+	<strong><%= m.content %></strong>
+	<small>by <strong><%= link_to m.user.name, user_path(m.user) %></strong></small>
+	<hr>
+<% end %>
